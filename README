@@ -1,2 +1,21 @@
-To be here soon:
-  * Demo on Trigonometric Interpolation for drawing splines
+Experiments:
+* trigsplines.tcl: Demo on Trigonometric Interpolation for drawing splines
+
+    Is Trigonometric Interpolation (from a Numerical Methods exercise) usable
+    as an alternative method for drawing curved lines in computer graphics?
+
+    The implemented procedure treats the points as complex numbers in the
+    Gaussian plane and calculates the points that constitute the interpolation
+    with one FFT and one inverse FFT. As Fast Fourier Transform always works
+    on complex numbers, the interpolation is not more difficult than
+    interpolating a real function f(t).
+
+    The results are rather interesting, inherently periodic (i.e. smoothly
+    closed) curves (actually the trajectory of a trigonometric polynomial
+    with an order approximately equal to the number of given points).
+    However, they are not useful as splines in graphical design, since
+    moving any control point affects the whole curve, and the curve does
+    not stay near the points (=> some sense of unstability).
+    It can rather be considered as a 'toy' (like the famous spirograph);
+    but the interpolation of exactly three point gives an ellipse, so
+    this special case might be worthwhile for drawing programs.
