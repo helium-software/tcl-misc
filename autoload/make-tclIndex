@@ -1,0 +1,71 @@
+#!/usr/bin/tclsh
+
+## handle --help flag
+
+if {"--help" in $argv} { puts {
+make-tclIndex - generate tclIndex from many directories
+
+Usage: make-tclIndex [--verbose] [dir dir2 ...]
+
+If directories are specified, each of them is recursively searched
+for .tcl files that will be scanned for procs by auto_mkindex.
+If no directories are specified, the current directory (from which
+make-tclIndex is called) is recursively searched. In both cases, the
+tclIndex file will be created in the current directory.
+
+(Notice that the tclIndex file, once generated, cannot be moved
+into another directory, because it contains relative paths!)
+
+The recursive search skips any hidden files and directories.
+
+The --verbose option enables printing of each directory visited.
+}
+exit
+}
+
+## handle --verbose flag
+
+if {"--verbose" in $argv} {
+  set verbose yes
+  puts "Searching for directories:"
+} else {
+  set verbose no
+}
+
+## get directories from commandline
+
+set tobevisited [list]
+foreach directory $argv {
+  if {$directory != "--verbose"} {
+    lappend tobevisited $directory
+  }
+}
+if {[llength $tobevisited]==0} {
+  set tobevisited [list .]
+}
+
+## recursively search for subdirectories
+
+if {$verbose} {set startAt [clock milliseconds]}
+
+set dirs [list]
+set i 0
+while {$i<[llength $tobevisited]} {
+  set dir [lindex $tobevisited $i]
+  if {$verbose} {puts "Found $dir"}
+  incr i
+  lappend dirs $dir/*.tcl  ;# add glob pattern in the same step
+  lappend tobevisited {*}[glob -directory $dir -type d -nocomplain *]
+}
+
+if {$verbose} {puts "Search finished, elapsed [expr [clock milliseconds] - $startAt] milliseconds."}
+
+## execute auto_mkindex to build ./tclIndex
+
+if {$verbose} {
+puts "Executing auto_mkindex to build [file normalize ./tclIndex]:"
+set startAt [clock milliseconds]}
+
+auto_mkindex . {*}$dirs
+
+if {$verbose} {puts "Building the index finished, elapsed [expr [clock milliseconds] - $startAt] milliseconds."}

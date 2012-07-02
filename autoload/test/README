@@ -1,0 +1,23 @@
+This subdirectory demonstrates how to use the make-tclIndex program,
+and how the auto_load facility makes programming with many .tcl files easy.
+
+* To generate the tclIndex:
+
+-  cd into this directory (tcl-misc/autoload/test)
+-  execute ../make-tclIndex   (no arguments or --verbose)
+
+* To execute the demo:
+
+-  ./main.tcl   (no arguments or --slow)
+
+main.tcl features two methods of enabling auto_load access:
+
+-  Standard way: append the directory containing tclIndex to $auto_path
+-  Fast way: directly source tclIndex  (variable $dir must be set)
+
+If you choose the "Fast way", you don't need to alter $auto_path first,
+just source the appropriate tclIndex. The "Fast way" should especially
+be chosen for packages (libraries), because changing $auto_path each time
+a package is loaded will lead to a performance penalty, as the contained
+directories and all their sub(sub...)directories will be re-scanned for
+pkgIndex.tcl files on the next [package require] command.

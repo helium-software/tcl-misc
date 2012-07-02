@@ -1,0 +1,31 @@
+This directory tree contains a total of four simple package skeletons:
+* testpkg and testpkgN (the latter using namespaces),
+    that demonstrate the 'classic' pkgIndex.tcl mechanism
+* testmod and testmodN (the latter using namespaces),
+    that demonstrate the more recent Tcl Modules mechanism.
+
+Classic pkgIndex.tcl
+--------------------
+
+In order to let Tcl find the packages, a file pkgIndex.tcl needs to be created.
+pkgIndex.tcl contains a sequence of "package ifneeded" commands (one for each
+package) that inform the interpreter about the presence of your packages.
+A program that wants to load the package (via package require) must hold the
+directory in which pkgIndex.tcl is placed (or one of its parent directories)
+in the list variable $auto_path.
+
+The script make_index.tcl creates such a pkgIndex.tcl file that contains the
+"package require" statements for testpkg and testpkgN.
+It works the same for any location you call it from (no need to cd into Packages/).
+
+Tcl Modules
+-----------
+
+Instead of using a dedicated index file, the Tcl Modules mechanism recognizes
+packages by their file name. A package file must be named <packagename>-<version>.tm
+(not .tcl) and placed in a directory which (or one of its parent directories) is
+contained in the module search path. This path is managed by the subcommands of
+::tcl::tm::path :
+-  ::tcl::tm::path add <directory>      (add to the existing path)
+-  ::tcl::tm::path remove <directory>   (remove from path)
+-  ::tcl::tm::path list                 (get path's elements)

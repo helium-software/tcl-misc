@@ -1,4 +1,36 @@
-Experiments:
+Tcl Mechanisms:
+* autoload: Automatic Command/Sub-Script Loading
+
+    The Tcl built-in auto_load mechanism facilitates making applications
+    and libraries that consist of many .tcl files. As an advantage over
+    manually calling source, you (a) don't have to track and remember the
+    file names where the subprocedures are defined, and (b) the subprocedures
+    are loaded on demand, which speeds up the application's startup time.
+
+    This directory provides a script that takes care of building the tclIndex
+    file, in which the names and locations of auto_load-able procedures are
+    stored. The script builds on the standard auto_mkindex procedure, adding a
+    recursive search for .tcl files, and making it usable for execution from
+    a shell.
+
+    If you want to start a project that builds on the auto_load facility, just
+    write the procedures in .tcl files where you want (no special tricks are
+    required), and then execute the make-tclIndex script, similar to a compiler.
+    It needs to be re-executed whenever you change the name of a procedure or
+    place it in a different file. See the examples in test/ for the actions
+    you need to perform (in the main program or library script) in order to let
+    Tcl find your tclIndex.
+
+* packaging-test: How to create packages for [package require]
+
+    Packages are ideal for organizing components that are used in multiple
+    projects. This directory contains some examples on how you can define
+    your own packages. There is a 'classical' way of doing this, which
+    requires writing/generating pkgIndex.tcl files, and a 'new' way, the
+    "Tcl Modules" mechanism, where package implementations are found by their
+    file names.
+
+Computer Graphics:
 * trigsplines.tcl: Demo on Trigonometric Interpolation for drawing splines
 
     Is Trigonometric Interpolation (from a Numerical Methods exercise) usable
