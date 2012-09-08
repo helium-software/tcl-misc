@@ -21,3 +21,10 @@ be chosen for packages (libraries), because changing $auto_path each time
 a package is loaded will lead to a performance penalty, as the contained
 directories and all their sub(sub...)directories will be re-scanned for
 pkgIndex.tcl files on the next [package require] command.
+
+If you need to query from a "main application" which namespaces are defined
+in the indexed script files (for example, when looking up installed plugins),
+you should use the make-tclIndex-with-ns script instead of make-tclIndex.
+The resulting tclIndex files have to be explicitly sourced in the "main
+application", otherwise the namespaces will only be present after some
+auto_load action has been triggered.
