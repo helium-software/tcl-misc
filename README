@@ -1,4 +1,5 @@
 Tcl Mechanisms:
+---------------
 * autoload: Automatic Command/Sub-Script Loading
 
     The Tcl built-in auto_load mechanism facilitates making applications
@@ -30,7 +31,13 @@ Tcl Mechanisms:
     "Tcl Modules" mechanism, where package implementations are found by their
     file names.
 
+User Interface Demos:
+---------------------
+* progressbar.tcl: Progressbar that uses the second (up-down) dimension for
+    more detailed progress feedback.
+
 Computer Graphics:
+------------------
 * trigsplines.tcl: Demo on Trigonometric Interpolation for drawing splines
 
     Is Trigonometric Interpolation (from a Numerical Methods exercise) usable
