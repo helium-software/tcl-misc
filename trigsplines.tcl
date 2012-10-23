@@ -1,7 +1,7 @@
 #!/usr/bin/wish8.5
 
 # Prevent "obscure" uses of 'set'
-proc get {arg} {uplevel set $arg}
+proc get {arg} {uplevel [list set $arg]}
 
 ttk::style theme use clam
 ttk::style configure TButton -width {} -padding {1 0}
