@@ -1,3 +1,20 @@
+Useful Programs with Tk Interface
+---------------------------------
+* Tk Worktime - a simple worktime logger.
+    Features:
+     # Outputs tab-separated text files with datasets consisting of
+        date, timespan and task description
+     # Supports creating multiple projects, each having its own log
+     # Clock can be started and stopped several times before creating
+        a log entry
+     # Description and project association of a time period can be
+        changed until it is finally committed to a log
+     # Clock chimes after 1 hour of continuous worktime
+     # "Subtract 1 minute" button for retroactive correction of
+       times of distraction. Shift-click the same button for subtracting
+       ten minutes.
+
+
 Tcl Mechanisms:
 ---------------
 * autoload: Automatic Command/Sub-Script Loading

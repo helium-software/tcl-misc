@@ -1,0 +1,20 @@
+wget http://www.bmumford.com/mset/courthouse/bells/EE.mp3
+ffmpeg -i EE.mp3 EE.wav
+(direct import into Audacity 1.3.12-beta would give very distorted result)
+
+Open EE.wav in Audacity
+Delete from 5.909 seconds to end
+Make hull curve for smooth fade-out at the end of the sound
+	Save project as bell.aup
+	Exact values from the saved .aup :
+	<envelope numpoints="7">
+		<controlpoint t="3.632892716720" val="1.000000000000"/>
+		<controlpoint t="4.395221868564" val="0.949999988079"/>
+		<controlpoint t="4.863134244523" val="0.835714280605"/>
+		<controlpoint t="5.367848717469" val="0.492857158184"/>
+		<controlpoint t="5.614943511515" val="0.242857158184"/>
+		<controlpoint t="5.746384572177" val="0.185714304447"/>
+		<controlpoint t="5.909365287399" val="0.049999952316"/>
+	</envelope>
+Set project frequency to ... Hz
+Export
