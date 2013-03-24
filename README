@@ -35,6 +35,10 @@ User Interface Demos:
 ---------------------
 * progressbar.tcl: Progressbar that uses the second (up-down) dimension for
     more detailed progress feedback.
+* menu.tcl: Pure-Ttk menu (proof of concept) designed to match closely
+    the "Clam" theme's look and feel.
+    Standard-Tk menus are not themeable (and there is no ttk::menu), so this
+    script shows how one could work around that.
 
 Computer Graphics:
 ------------------
@@ -58,6 +62,15 @@ Computer Graphics:
     It can rather be considered as a 'toy' (like the famous spirograph);
     but the interpolation of exactly three point gives an ellipse, so
     this special case might be worthwhile for drawing programs.
+
+* polygonal.tcl: Demo on "polygonal numbers" patterns
+
+    The images in the German Wikipedia article about 'Centered polygonal
+    numbers' (Zentrierte Polygonalzahl) inspired me to write this demo.
+    I wanted to check if drawings like this result in non-periodic patterns.
+    This is not the case, but the demo shows how one could do a user-friendly
+    "testbed" for simple geometric drawing programs.
+    
 
 «Smart»phone App Clones
 -----------------------
