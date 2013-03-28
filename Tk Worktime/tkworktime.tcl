@@ -607,7 +607,7 @@ after idle {
 proc viewlog_prepare {{-noraise ""}} {
 	if {[winfo exists .logwindow]} {
 		if {${-noraise}!="-noraise"} {raise .logwindow}
-		.logwindow configure -state normal
+		.logwindow.text configure -state normal
 		.logwindow.text delete 1.0 end
 		return
 	}
